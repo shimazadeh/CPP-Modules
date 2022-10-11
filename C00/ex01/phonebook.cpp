@@ -26,11 +26,21 @@ void	phonebook::display_all(void){
 	i = 0;
 	while (i < 8)
 	{
-		std::cout << this->header[i] << ":" << this->lists[i].firstname << "|";
-		std::cout << this->header[i] << ":" << this->lists[i].nickname << "|";
-		std::cout << this->header[i] << ":" << this->lists[i].lastname << "|";
-		std::cout << this->header[i] << ":" << this->lists[i].phone_num << "|";
-		std::cout << this->header[i] << ":" << this->lists[i].secret << std::endl;
+		std::cout << this->header[0] << ":" << this->lists[i].firstname << "|";
+		std::cout << this->header[1] << ":" << this->lists[i].nickname << "|";
+		std::cout << this->header[2] << ":" << this->lists[i].lastname << "|";
+		std::cout << this->header[3] << ":" << this->lists[i].phone_num << "|";
+		std::cout << this->header[4] << ":" << this->lists[i].secret << std::endl;
 		i++;
 	}
+}
+
+
+void	phonebook::display_index(int index){
+
+	std::cout << this->header[0] << ":" << this->lists[index].firstname << "|";
+	std::cout << this->header[1] << ":" << this->lists[index].nickname << "|";
+	std::cout << this->header[2] << ":" << this->lists[index].lastname << "|";
+	std::cout << this->header[3] << ":" << this->lists[index].phone_num << "|";
+	std::cout << this->header[4] << ":" << this->lists[index].secret << std::endl;
 }

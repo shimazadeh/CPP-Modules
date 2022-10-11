@@ -19,15 +19,15 @@ contact:: ~contact(void){
 
 void	contact::update(int element, int index, char *buffer){
 
-	// if (element == 0)
-	// 	this->firstname = buffer;
-	// else if (element == 1)
-	// 	this->nickname = buffer;
-	// else if (element == 2)
-	// 	this->lastname = buffer;
-	// else if (element == 3)
-	// 	this->phone_num = buffer;
-	// else if (element == 4)
-	// 	this->secret= buffer;
+	if (element == 0)
+		strcpy(this->firstname, buffer);
+	else if (element == 1)
+		strcpy(this->nickname, buffer);
+	else if (element == 2)
+		strcpy(this->lastname, buffer);
+	else if (element == 3)
+		strcpy(this->phone_num, buffer);
+	else if (element == 4)
+		strcpy(this->secret, buffer);
 	return ;
 }

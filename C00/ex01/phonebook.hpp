@@ -13,6 +13,7 @@ public:
 	const char	*header[5];
 
 	void	display_all();
+	void	display_index(int index);
 };
 
 #endif
