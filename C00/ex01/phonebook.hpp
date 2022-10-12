@@ -10,9 +10,11 @@ public:
 	~phonebook(void);
 
 	contact	lists[8];
-	const char	*header[5];
+	const char	*header[6];
+	const char	*questions[5];
 
-	void	display_all();
+	void	display_all(int count);
+	void	display_space(int count);
 	void	display_index(int index);
 };
 

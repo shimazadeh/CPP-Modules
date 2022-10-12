@@ -6,13 +6,14 @@ class contact{
 public:
 	contact(void);
 	~contact(void);
-	char	firstname[512];
-	char	nickname[512];
-	char	lastname[512];
-	char	phone_num[512];
-	char	secret[512];
+	char	firstname[9];
+	char	nickname[9];
+	char	lastname[9];
+	char	phone_num[9];
+	char	secret[9];
 
 	void	update(int element, int index, char *buffer);
+	char	*create(char *str, char *buffer);
 };
 
 #endif

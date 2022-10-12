@@ -3,34 +3,49 @@
 #include "phonebook.hpp"
 
 phonebook:: phonebook(void){
-	std::cout << "constructor is called" <<std::endl;
-	memset(this->header, 0, 5);
+	memset(this->header, 0, 6);
 	memset(this->lists, 0, 8);
-	this->header[0] = "firstname";
-	this->header[1] = "nickname";
-	this->header[2] = "lastname";
-	this->header[3] = "phone#";
-	this->header[4] = "Secret";
+	memset(this->questions, 0, 5);
+
+	this->header[0] = "Firstname ";
+	this->header[1] = "Nickname  ";
+	this->header[2] = "Lastname ";
+	this->header[3] = "Phone Numb";
+	this->header[4] = "DarkSecret";
+	this->header[5] = "index     ";
+
+	this->questions[0] = "enter the firstname:";
+	this->questions[1] = "enter the nickname:";
+	this->questions[2] = "enter the lastname:";
+	this->questions[3] = "enter the phone number:";
+	this->questions[4] = "enter your darkest secret!:";
 	return ;
 }
 
 phonebook::~phonebook(void){
-	std::cout <<"destructor is called" << std::endl;
 	return ;
 }
 
-void	phonebook::display_all(void){
+void	phonebook::display_all(int count){
 
 	int	i;
 
 	i = 0;
-	while (i < 8)
+	std::cout << this->header[5] << " |";
+	std::cout << this->header[0] << " |";
+	std::cout << this->header[1] << " |";
+	std::cout << this->header[2] << " |";
+	std::cout << this->header[3] << " |";
+	std::cout << this->header[4] << std::endl;
+
+	while (i < count)
 	{
-		std::cout << this->header[0] << ":" << this->lists[i].firstname << "|";
-		std::cout << this->header[1] << ":" << this->lists[i].nickname << "|";
-		std::cout << this->header[2] << ":" << this->lists[i].lastname << "|";
-		std::cout << this->header[3] << ":" << this->lists[i].phone_num << "|";
-		std::cout << this->header[4] << ":" << this->lists[i].secret << std::endl;
+		std::cout << i << "         " << " |";
+		std::cout << this->lists[i].firstname << " |";
+		std::cout << this->lists[i].nickname << " |";
+		std::cout << this->lists[i].lastname << " |";
+		std::cout << this->lists[i].phone_num << " |";
+		std::cout << this->lists[i].secret << std::endl;
 		i++;
 	}
 }
@@ -38,9 +53,17 @@ void	phonebook::display_all(void){
 
 void	phonebook::display_index(int index){
 
-	std::cout << this->header[0] << ":" << this->lists[index].firstname << "|";
-	std::cout << this->header[1] << ":" << this->lists[index].nickname << "|";
-	std::cout << this->header[2] << ":" << this->lists[index].lastname << "|";
-	std::cout << this->header[3] << ":" << this->lists[index].phone_num << "|";
-	std::cout << this->header[4] << ":" << this->lists[index].secret << std::endl;
+	std::cout << this->header[5] << " |";
+	std::cout << this->header[0] << " |";
+	std::cout << this->header[1] << " |";
+	std::cout << this->header[2] << " |";
+	std::cout << this->header[3] << " |";
+	std::cout << this->header[4] << std::endl;
+
+	std::cout << index << "         " << " |";
+	std::cout << this->lists[index].firstname << " |";
+	std::cout << this->lists[index].nickname << " |";
+	std::cout << this->lists[index].lastname << " |";
+	std::cout << this->lists[index].phone_num << " |";
+	std::cout << this->lists[index].secret << std::endl;
 }

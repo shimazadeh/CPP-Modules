@@ -8,7 +8,9 @@ int	main(int ac, char **av)
 	int		j;
 
 	j = 1;
-	while(av[j])
+	if (ac < 2)
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+	while(ac > 1 && av[j])
 	{
 		i = 0;
 		while(av[j][i])
