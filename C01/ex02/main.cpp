@@ -1,19 +1,20 @@
+#include <iostream>
+
 int main(void)
 {
 	char	*str;
-	void	*stringPTR;
-	char	*stringREF;
+	char	**stringPTR;
+	char	*&stringREF = str;
 
-	str = "HI THIS IS BRAIN";
+	str = (char *)"HI THIS IS BRAIN";
 	stringPTR = &str;
-	stringREF = str;
 
-	std::cout << &str <<std::endl;
-	std::cout << &stringPTR <<std::endl;
-	std::cout << &stringREF <<std::endl;
+	std::cout << "the address of str: " << &str << std::endl;
+	std::cout << "the address of stringPTR: " << &stringPTR << std::endl;
+	std::cout << "the address of stringREF: " << &stringREF << std::endl;
 
-	std::cout << str <<std::endl;
-	std::cout << *stringPTR <<std::endl;
-	std::cout << *stringREF <<std::endl;
+	std::cout << "the value of str: " << str << std::endl;
+	std::cout << "the value of stringREF: " << stringREF << std::endl;
+	std::cout << "the value of stringPTR: " << *stringPTR << std::endl;
 
 }
