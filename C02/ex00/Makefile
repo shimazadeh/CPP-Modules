@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Harl
+NAME = harlFilter
 
 SRCS = main.cpp Harl.cpp Harl.hpp
 

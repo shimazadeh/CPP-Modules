@@ -2,41 +2,22 @@
 #include <fstream>
 #include <cstring>
 
-// int	main()
-// {
-// 	std::ifstream	ifs("numbers");
-// 	unsigned int	dst;
-// 	unsigned int	dst2;
-// 	ifs >> dst >> dst2;
-
-// 	std::cout << dst << " " << dst2 <<std::endl;
-// 	ifs.close();
-
-// 	std::ofstream	ofs("test.out");
-// 	ofs << "i like ponies a whole damn lot" << std::endl;
-// 	return (0);
-// }
-
 int	replace_file(char	*filename, char *s1, char *s2)
 {
 	std::ifstream	ifs(filename);
-	char			*new_filename;
-	char			buffer[512];
+	std::string		new_filename(filename);
+	std::string		buffer;
 
-	new_filename = strdup(filename);
-	strcat(new_filename, ".replace");
+	new_filename += ".replace";
 	std::ofstream	ofs(new_filename);
 
-	memset(buffer, 0, 512);
-	while (ifs.peek() != EOF)
+	while (getline(ifs, buffer))
 	{
-		ifs >> buffer;
-		if (strcmp(buffer, s1) == 0)
-			ofs << s2;
+		if (buffer.compare(s1) == 0)
+			ofs << s2 << std::endl;
 		else
-			ofs << buffer;
-		memset(buffer, 0, 512);
-		ofs << std::endl;
+			ofs << buffer << std::endl;
+		buffer = "";
 	}
 	ifs.close();
 	ofs.close();
