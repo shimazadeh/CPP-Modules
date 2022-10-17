@@ -10,13 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = harlFilter
+NAME = Fixed
 
-SRCS = main.cpp Harl.cpp Harl.hpp
+SRCS = main.cpp Fixed.cpp Fixed.hpp
 
 OBJS = $(SRCS:%.c=%.o)
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
