@@ -23,11 +23,12 @@ Fixed::Fixed(Fixed const &a)
 
 Fixed::Fixed(const int a)
 {
-	this->number = a;
+	this->number = (a << Fixed::frac_bites);
 }
 
 Fixed::Fixed(const float a)
 {
+	std::cout << "calling float constructor" << (1 << Fixed::frac_bites) << std::endl;
 	// this->number = a;
 	this->number = roundf(a * (1 << Fixed::frac_bites));
 }
@@ -53,12 +54,12 @@ void	Fixed::setRawBites(int const raw){
 
 float	Fixed::toFloat(void)const{
 
-	return ((float)(this->number));
+	return ((float)(this->number) / (float) (1 << Fixed::frac_bites));
 }
 
 int	Fixed::toInt(void)const{
 
-	return (roundf(this->number));
+	return (this->number >> Fixed::frac_bites);
 }
 
 std::ostream & operator<<(std::ostream & o, Fixed const &x){
