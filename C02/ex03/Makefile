@@ -12,7 +12,7 @@
 
 NAME = Fixed
 
-SRCS = main.cpp Fixed.cpp Fixed.hpp
+SRCS = main.cpp Fixed.cpp Fixed.hpp Point.cpp Point.hpp
 
 OBJS = $(SRCS:%.c=%.o)
 

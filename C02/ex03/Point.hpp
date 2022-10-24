@@ -11,6 +11,7 @@ class	Point{
 	~Point(void);
 
 	Point &			operator=(Point const &a);
+	float			area(Point const b1, Point const c1)const;
 
 	private:
 	Fixed	x;

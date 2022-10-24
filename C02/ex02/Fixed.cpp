@@ -154,7 +154,20 @@ Fixed	Fixed::operator++(int){
 	Fixed	tmp;
 	tmp = *this;
 
-	std::cout << "im here" << std::endl;
+	this->number++;
+	return (tmp);
+}
+
+Fixed	Fixed::operator--(){
+
+	this->number++;
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int){
+	Fixed	tmp;
+	tmp = *this;
+
 	this->number++;
 	return (tmp);
 }
