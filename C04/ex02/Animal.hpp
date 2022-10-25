@@ -7,8 +7,6 @@
 class Animal
 {
 	public:
-	Animal(void);
-	Animal(const Animal &src);
 	virtual	~Animal(void);
 
 	Animal	&operator=(const Animal &src);
@@ -18,6 +16,8 @@ class Animal
 	std::string		getType()const;
 
 	protected:
+	// Animal(void);
+	// Animal(const Animal &src);
 	std::string type;
 	Brain	*animal_brain = NULL;
 };

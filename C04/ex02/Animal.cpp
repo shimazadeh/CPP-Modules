@@ -1,18 +1,18 @@
 #include "Animal.hpp"
 
-Animal::Animal(void)
-{
-	this->type = "Animal";
-	std::cout << "Animal default constructor is called" << std::endl;
-	return ;
-}
+// Animal::Animal(void)
+// {
+// 	this->type = "Animal";
+// 	std::cout << "Animal default constructor is called" << std::endl;
+// 	return ;
+// }
 
-Animal::Animal(const Animal &other)
-{
-	*this = other;
-	std::cout << "Animal copy constructor is called" << std::endl;
-	return ;
-}
+// Animal::Animal(const Animal &other)
+// {
+// 	*this = other;
+// 	std::cout << "Animal copy constructor is called" << std::endl;
+// 	return ;
+// }
 
 Animal::~Animal(void)
 {
