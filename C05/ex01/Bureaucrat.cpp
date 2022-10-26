@@ -1,16 +1,12 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(void)
+Bureaucrat::Bureaucrat(void): name(""), grade(150)
 {
-	this->name = "";
-	this->grade = 2;
 	std::cout << "default constructor is called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string str)
+Bureaucrat::Bureaucrat(const std::string &str, int _grade): name(str), grade(_grade)
 {
-	this->name = str;
-	this->grade = 2;
 	std::cout << "Name constructor is called" << std::endl;
 }
 
@@ -28,18 +24,17 @@ Bureaucrat::~Bureaucrat(void)
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &src)
 {
 	std::cout << "Bureaucrat assignment operator is called" << std::endl;
-	this->getName = src.getName;
-	this->grade = src.getGrade;
+	this->grade = src.getGrade();
 	return (*this);
 }
 
-std::string	Bureaucrat::getName()
+const std::string	&Bureaucrat::getName()const
 {
 	std::cout << "getName is called" << std::endl;
 	return (this->name);
 }
 
-int	Bureaucrat::getGrade()
+int	Bureaucrat::getGrade()const
 {
 	std::cout << "getGrade is called" << std::endl;
 	return(this->grade);
@@ -66,4 +61,20 @@ void	Bureaucrat::increment(int amount)
 void	Bureaucrat::decrement(int amount)
 {
 	this->grade = this->grade + amount;
+}
+
+void	Bureaucrat::signForm(const Form &other)const
+{
+	if (other.beSigned(*this))
+	{
+		std::cout << this->getName() << " signed " << other.getName() << std::endl;
+	}
+	else
+		std::cout << this->getName() << " couldn't sign " << other.getName() << std::endl;
+}
+
+std::ostream	&operator<<(std::ostream &o,const Bureaucrat &src)
+{
+	o << src.getName() << ", Bureaucrat grade " << src.getGrade();
+	return o;
 }

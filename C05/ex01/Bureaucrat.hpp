@@ -3,12 +3,15 @@
 
 #include <iostream>
 #include <stdexcept>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
 	public:
 		Bureaucrat(void);
-		Bureaucrat(std::string str);
+		Bureaucrat(const std::string &str, int grade);
 		Bureaucrat(const Bureaucrat &other);
 		~Bureaucrat(void);
 
@@ -31,16 +34,22 @@ class Bureaucrat
 				}
 		};
 
-		std::string	getName();
-		int		getGrade();
-		void	increment(int amount);
-		void	decrement(int amount);
-		void	checkGradeHigh();
-		void	checkGradeLow();
+		const std::string	&getName()const;
+		int					getGrade()const;
+		void				increment(int amount);
+		void				decrement(int amount);
+		void				checkGradeHigh();
+		void				checkGradeLow();
+		void				signForm(const Form &other)const;
+		void				executeForm(const Form &form)const;
 
 	private:
-		std::string		 	name;
+		const std::string	name;
 		int					grade;
+		// Bureaucrat(void);
+		// void				checkGradeHigh();
+		// void				checkGradeLow();
 };
 
+std::ostream	&operator<<(std::ostream &o,const Bureaucrat &src);
 #endif
