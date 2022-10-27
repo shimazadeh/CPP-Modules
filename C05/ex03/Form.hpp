@@ -24,6 +24,9 @@ class Form
 		int						getExecuteGrade()const;
 		void					checkGrade()const;
 
+		virtual bool	execute(Bureaucrat const &executor) const= 0;
+		bool			ifexecutable(Bureaucrat const &executor) const;
+
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -38,6 +41,15 @@ class Form
 				virtual const char *what() const throw()
 				{
 					return ("the grade is too low!");
+				}
+		};
+
+		class BureaucratErrorMsg : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Bureaucrat grade is too low to sign the form!");
 				}
 		};
 

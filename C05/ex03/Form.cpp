@@ -2,28 +2,28 @@
 
 Form::Form(void): name(""), sign(0), gradeToSign(150), gradeToExecute(150)
 {
-	// std::cout << "default constructor is called" << std::endl;
+	std::cout << "default constructor is called" << std::endl;
 }
 
 Form::Form(const std::string &str, int _gradeToSign, int _gradeToExecute): name(str), sign(0), gradeToSign(_gradeToSign), gradeToExecute(_gradeToExecute)
 {
-	// std::cout << "name constructor is called" << std::endl;
+	std::cout << "name constructor is called" << std::endl;
 }
 
 Form::Form(const Form &other): name(other.getName()), sign(other.ifSigned()), gradeToSign(other.getSignGrade()), gradeToExecute(other.getExecuteGrade())
 {
 	*this = other;
-	// std::cout << "copy constructor is called" << std::endl;
+	std::cout << "copy constructor is called" << std::endl;
 }
 
 Form::~Form(void)
 {
-	// std::cout << "destructor is called" << std::endl;
+	std::cout << "destructor is called" << std::endl;
 }
 
 Form	&Form::operator=(const Form &src)
 {
-	// std::cout << "Form assignment operator is called" << std::endl;
+	std::cout << "Form assignment operator is called" << std::endl;
 	this->sign = src.ifSigned();
 	return (*this);
 }
@@ -68,6 +68,15 @@ bool	Form::beSigned(const Bureaucrat &other)
 		this->sign = 0;
 		return false;
 	}
+}
+
+bool	Form::ifexecutable(Bureaucrat const &executor)const
+{
+	if (this->sign == true && executor.getGrade() < this->gradeToExecute)
+		return true;
+	else
+		throw Form::BureaucratErrorMsg();
+	return (0);
 }
 
 std::ostream	&operator<<(std::ostream &o, Form const &src)

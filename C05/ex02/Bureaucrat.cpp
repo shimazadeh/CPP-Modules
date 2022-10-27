@@ -70,7 +70,15 @@ void	Bureaucrat::signForm(Form &other)const
 		std::cout << this->getName() << " signed " << other.getName() << std::endl;
 	}
 	else
-		std::cout << this->getName() << " couldn't sign " << other.getName() << "because the grade is not high enough" << std::endl;
+		std::cout << this->getName() << " couldn't sign " << other.getName() << "because the grade isn't high enough" << std::endl;
+}
+
+void	Bureaucrat::executeForm(const Form &form)const
+{
+	if (form.execute(*this))
+		std::cout << this->getName() << " executed form: " << form.getName() << std::endl;
+	else
+		std::cout << this->getName() << " could not execute form: " << form.getName() << std::endl;
 }
 
 std::ostream	&operator<<(std::ostream &o,const Bureaucrat &src)

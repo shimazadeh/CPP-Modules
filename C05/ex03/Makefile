@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Form
+NAME = StupidIntern
 
-SRCS = main.cpp Bureaucrat.cpp Bureaucrat.hpp Form.hpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp Bureaucrat.hpp Form.hpp Form.cpp ShrubberyCreationForm.cpp ShrubberyCreationForm.hpp PresidentialPardonForm.cpp PresidentialPardonForm.hpp RobotomyRequestForm.cpp RobotomyRequestForm.hpp Intern.cpp Intern.hpp
 
 OBJS = $(SRCS:%.c=%.o)
 

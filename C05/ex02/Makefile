@@ -12,7 +12,7 @@
 
 NAME = Form
 
-SRCS = main.cpp Bureaucrat.cpp Bureaucrat.hpp Form.hpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp Bureaucrat.hpp Form.hpp Form.cpp ShrubberyCreationForm.cpp ShrubberyCreationForm.hpp PresidentialPardonForm.cpp PresidentialPardonForm.hpp RobotomyRequestForm.cpp RobotomyRequestForm.hpp
 
 OBJS = $(SRCS:%.c=%.o)
 
