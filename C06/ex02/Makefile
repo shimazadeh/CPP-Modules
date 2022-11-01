@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = identifytype
 
-SRCS = main.cpp convert.cpp convert.hpp
+SRCS = main.cpp Base.hpp Base.cpp
 
 OBJS = $(SRCS:%.c=%.o)
 

@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = serialize
 
-SRCS = main.cpp convert.cpp convert.hpp
+SRCS = main.cpp Data.hpp
 
 OBJS = $(SRCS:%.c=%.o)
 
