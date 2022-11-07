@@ -1,61 +1,70 @@
-#include <iostream>
-#include <cstring>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shabibol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/07 12:57:52 by shabibol          #+#    #+#             */
+/*   Updated: 2022/11/07 12:57:53 by shabibol         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "contact.hpp"
 
 contact:: contact(void){
-	memset(this->firstname, 0, 9);
-	memset(this->nickname, 0, 9);
-	memset(this->lastname, 0, 9);
-	memset(this->phone_num, 0, 9);
-	memset(this->secret, 0, 9);
-	return ;
+
+	this->firstname = "";
+	this->nickname = "";
+	this->lastname = "";
+	this->phone_num = "";
+	this->secret = "";
 }
 
 contact:: ~contact(void){
 	return ;
 }
 
-char	*contact::create(char *str, char *buffer){
-	int i;
-
-	i = 0;
-	while(i < strlen(buffer))
-	{
-		str[i] = buffer[i];
-		i++;
-	}
-	if (!buffer[i])
-	{
-		while(i < 9)
-		{
-			str[i] = ' ';
-			i++;
-		}
-	}
-	return (str);
+std::string	contact::get_firstname(){
+	return (this->firstname);
 }
 
-void	contact::update(int element, int index, char *buffer){
+std::string	contact::get_nickname(){
+	return (this->nickname);
+}
 
-	if (element == 0)
-	{
-		if (strlen(buffer) < 11)
-		{
-			strcpy(this->firstname, buffer);
-		}
-		else
-		{
-			memcpy(this->firstname, buffer, 8);
-			this->firstname[9] = '.';
-		}
-	}
-	else if (element == 1)
-		strcpy(this->nickname, buffer);
-	else if (element == 2)
-		strcpy(this->lastname, buffer);
-	else if (element == 3)
-		strcpy(this->phone_num, buffer);
-	else if (element == 4)
-		strcpy(this->secret, buffer);
-	return ;
+std::string	contact::get_lastname(){
+	return (this->lastname);
+}
+
+std::string	contact::get_phonenum(){
+	return (this->phone_num);
+}
+
+std::string	contact::get_secret(){
+	return (this->secret);
+}
+
+void		contact::update(std::string	name, int i){
+
+	if (i == 0)
+		this->firstname = name;
+	else if (i == 1)
+		this->nickname = name;
+	else if (i == 2)
+		this->lastname = name;
+	else if (i == 3)
+		this->phone_num = name;
+	else if (i == 4)
+		this->secret = name;
+}
+
+contact	&contact::operator=(contact src){
+
+	this->firstname = src.get_firstname();
+	this->lastname = src.get_lastname();
+	this->nickname = src.get_nickname();
+	this->phone_num = src.get_phonenum();
+	this->secret = src.get_secret();
+	return (*this);
 }

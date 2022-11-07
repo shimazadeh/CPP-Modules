@@ -1,57 +1,71 @@
-#include <iostream>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shabibol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/07 12:58:09 by shabibol          #+#    #+#             */
+/*   Updated: 2022/11/07 12:58:10 by shabibol         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phonebook.hpp"
-#include <cstring>
-#include <string>
+
+void	fill_in(contact	*new_member)
+{
+	std::string	buffer;
+	int			flag = 0;
+	int			i = 0;
+	std::string	questions[5] = {"enter the firstname",
+								"enter the nickname",
+								"enter the lastname",
+								"enter the phone number",
+								"enter your darkest secret"};
+
+	while(i < 5)
+	{
+		flag = 0;
+		while(!flag)
+		{
+			std::cout << questions[i] << std::endl;
+			std::cin >> buffer;
+			if (buffer.length())
+			{
+				new_member->update(buffer, i);
+				flag = 1;
+			}
+			else
+				std::cout << "entry cannot be empty, try again!" << std::endl;
+		}
+		i++;
+	}
+	return ;
+}
 
 int  main(void)
 {
 	phonebook	book;
-	char		buffer[512];
-	int			index;
-	int			j;
-	int			count;
-	int			k;
-	char		temp[9];
+	std::string	buffer;
+	contact		new_member;
 
-	k = 0;
-	j = 0;
-	count = 0;
 	while(1)
 	{
-		memset(buffer, 0, 512);
 		std::cout << "Enter one of the three commands: ADD, SEARCH, EXIT" << std::endl;
 		std::cin >> buffer;
-		if (buffer && strcmp(buffer, "ADD") == 0)
+		if (!buffer.compare("ADD"))
 		{
-			if (j == 7)
-				j = 0;
-			for (int i = 0; i < 5; i)
-			{
-				memset(buffer, 0, 512);
-				std::cout << book.questions[i] << std::endl;
-				std::cin >> buffer;
-				if (buffer && strlen(buffer) < 9)
-				{
-					memset(temp, ' ', 9 - strlen(buffer));
-					buffer.append(temp);
-					book.lists[j].update(i, j, buffer);
-					i++;
-				}
-				else
-					std::cout << "entry cannot be empty try again!" << std::endl;
-			}
-			j++;
-			if (count < 9)
-				count++;
+			fill_in(&new_member);
+			book.add_contact(new_member);
 		}
-		else if (buffer && strcmp(buffer, "SEARCH") == 0)
+		else if (!buffer.compare("SEARCH"))
 		{
-			book.display_all(count);
+			book.display_all();
 			std::cout << "Enter contact index" << std::endl;
-			std::cin >> index;
-			book.display_index(index);
+			std::cin >> buffer;
+			book.search_cmd(buffer);
 		}
-		else if (buffer && strcmp(buffer, "EXIT") == 0)
+		else if (!buffer.compare("EXIT"))
 			return (0);
 		else
 			std::cout <<"invalid entry! try again!" <<std::endl;

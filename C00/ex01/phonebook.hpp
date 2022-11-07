@@ -1,7 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shabibol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/07 12:58:24 by shabibol          #+#    #+#             */
+/*   Updated: 2022/11/07 12:58:26 by shabibol         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
+#include <string>
 #include "contact.hpp"
+#include <iostream>
+#include <iomanip>
 
 class phonebook {
 
@@ -9,13 +24,18 @@ public:
 	phonebook(void);
 	~phonebook(void);
 
-	contact	lists[8];
-	const char	*header[6];
-	const char	*questions[5];
+	void		add_contact(contact &new_member);
+	void		display_all(void);
+	void		search_cmd(std::string index);
+	void		display_member(int index);
+	void		display_header(void);
+	std::string	reshape(std::string src);
+	int			is_digit(std::string src);
 
-	void	display_all(int count);
-	void	display_space(int count);
-	void	display_index(int index);
+private:
+	contact		lists[8];
+	int			pos;
+	int			count;
 };
 
 #endif

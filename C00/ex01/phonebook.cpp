@@ -1,24 +1,21 @@
-#include <iostream>
-#include <cstring>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shabibol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/07 12:58:19 by shabibol          #+#    #+#             */
+/*   Updated: 2022/11/07 12:58:20 by shabibol         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phonebook.hpp"
 
 phonebook:: phonebook(void){
-	memset(this->header, 0, 6);
-	memset(this->lists, 0, 8);
-	memset(this->questions, 0, 5);
 
-	this->header[0] = "Firstname ";
-	this->header[1] = "Nickname  ";
-	this->header[2] = "Lastname ";
-	this->header[3] = "Phone Numb";
-	this->header[4] = "DarkSecret";
-	this->header[5] = "index     ";
-
-	this->questions[0] = "enter the firstname:";
-	this->questions[1] = "enter the nickname:";
-	this->questions[2] = "enter the lastname:";
-	this->questions[3] = "enter the phone number:";
-	this->questions[4] = "enter your darkest secret!:";
+	this->pos = 0;
+	this->count = -1;
 	return ;
 }
 
@@ -26,44 +23,97 @@ phonebook::~phonebook(void){
 	return ;
 }
 
-void	phonebook::display_all(int count){
+void	phonebook::add_contact(contact	&new_member){
 
-	int	i;
+	if (this->count < 8)
+		this->count++;
+	if (this->pos > 7)
+		this->pos = 0;
+	this->lists[this->pos] = new_member;
+	this->pos++;
+	return ;
+}
 
-	i = 0;
-	std::cout << this->header[5] << " |";
-	std::cout << this->header[0] << " |";
-	std::cout << this->header[1] << " |";
-	std::cout << this->header[2] << " |";
-	std::cout << this->header[3] << " |";
-	std::cout << this->header[4] << std::endl;
+void	phonebook::display_header(void){
 
-	while (i < count)
+	std::cout << std::setw(10) << "index" << "|";
+	std::cout << std::setw(10) << "firstname" << "|";
+	std::cout << std::setw(10) << "nickname" << "|";
+	std::cout << std::setw(10) << "lastname" << "|";
+	std::cout << std::setw(10) << "phone numb" <<"|";
+	std::cout << std::setw(10) << "secret" << "|" << std::endl;
+}
+
+std::string	phonebook::reshape(std::string src){
+
+	if (src.length() > 10)
 	{
-		std::cout << i << "         " << " |";
-		std::cout << this->lists[i].firstname << " |";
-		std::cout << this->lists[i].nickname << " |";
-		std::cout << this->lists[i].lastname << " |";
-		std::cout << this->lists[i].phone_num << " |";
-		std::cout << this->lists[i].secret << std::endl;
+		src.resize(9);
+		src = src + '.';
+	}
+	return (src);
+}
+
+void	phonebook::display_member(int index){
+
+	std::string	to_display;
+
+	to_display = this->lists[index].get_firstname();
+	std::cout << std::setw(10) << this->reshape(to_display) << "|";
+
+	to_display = this->lists[index].get_nickname();
+	std::cout << std::setw(10) << this->reshape(to_display) << "|";
+
+	to_display = this->lists[index].get_lastname();
+	std::cout << std::setw(10) << this->reshape(to_display) << "|";
+
+	to_display = this->lists[index].get_phonenum();
+	std::cout << std::setw(10) << this->reshape(to_display) << "|";
+
+	to_display = this->lists[index].get_secret();
+	std::cout << std::setw(10) << this->reshape(to_display) << "|" << std::endl;
+
+}
+
+void	phonebook::display_all(void){
+
+	int	i = 0;
+
+	this->display_header();
+	while (this->lists[i].get_firstname().length())
+	{
+		std::cout << std::setw(10) << i << "|";
+		this->display_member(i);
 		i++;
 	}
 }
 
+int	phonebook::is_digit(std::string	src){
 
-void	phonebook::display_index(int index){
+	int	i = 0;
 
-	std::cout << this->header[5] << " |";
-	std::cout << this->header[0] << " |";
-	std::cout << this->header[1] << " |";
-	std::cout << this->header[2] << " |";
-	std::cout << this->header[3] << " |";
-	std::cout << this->header[4] << std::endl;
+	while (i < src.length())
+	{
+		if (src[i] < '0' || src[i] > '9')
+			return 1;
+		i++;
+	}
+	return 0;
+}
 
-	std::cout << index << "         " << " |";
-	std::cout << this->lists[index].firstname << " |";
-	std::cout << this->lists[index].nickname << " |";
-	std::cout << this->lists[index].lastname << " |";
-	std::cout << this->lists[index].phone_num << " |";
-	std::cout << this->lists[index].secret << std::endl;
+void	phonebook::search_cmd(std::string _index){
+
+	int	index = atoi(_index.c_str());
+
+	if (this->is_digit(_index))
+		std::cout << "entry must be a valid digit" << std::endl;
+	else if (index > this->count)
+		std::cout << "the requested member does not exist!" << std::endl;
+	else
+	{
+		this->display_header();
+		std::cout << std::setw(10) << index << "|";
+		this->display_member(index);
+	}
+	return ;
 }
