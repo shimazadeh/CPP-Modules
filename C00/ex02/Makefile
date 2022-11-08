@@ -21,10 +21,10 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	g++ $(OBJS) -o $(NAME)
+	c++ $(OBJS) -o $(NAME)
 
 %.o: %.c
-	g++ $(FLAGS) -c $< -o $@
+	c++ $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f *.o

@@ -1,26 +1,28 @@
-#include <iostream>
 #include "Weapon.hpp"
 
-Weapon::Weapon(const char *name){
+Weapon::Weapon(void){
+	std::cout << "default constructor is called" << std::endl;
+	return ;
+}
 
-	this->type = name;
+Weapon::Weapon(std::string name): type(name)
+{
+	std::cout << "name constructor is called" << std::endl;
 	return ;
 }
 
 Weapon::~Weapon(void){
 
+	std::cout << "default destructor is called" << std::endl;
 	return ;
 }
 
-const char	*Weapon::getType(void)
+const std::string &Weapon::getType(void)
 {
-	const char	*result;
-
-	result = this->type;
-	return (result);
+	return (this->type);
 }
 
-void	Weapon::setType(const char *new_type)
+void	Weapon::setType(const std::string&	new_type)
 {
 	this->type = new_type;
 	return ;

@@ -49,10 +49,9 @@ int  main(void)
 	std::string	buffer;
 	Contact		new_member;
 
-	while(1)
+	std::cout << "Enter one of the three commands: ADD, SEARCH, EXIT" << std::endl;
+	while(std::getline(std::cin, buffer))
 	{
-		std::cout << "Enter one of the three commands: ADD, SEARCH, EXIT" << std::endl;
-		std::getline(std::cin, buffer);
 		if (!buffer.compare("ADD"))
 		{
 			fill_in(&new_member);
@@ -69,6 +68,7 @@ int  main(void)
 			return (0);
 		else
 			std::cout <<"invalid entry! try again!" <<std::endl;
+		std::cout << "Enter one of the three commands: ADD, SEARCH, EXIT" << std::endl;
 	}
 	return (0);
 }

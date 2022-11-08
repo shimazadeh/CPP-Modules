@@ -105,7 +105,9 @@ void	PhoneBook::search_cmd(std::string _index){
 
 	int	index = atoi(_index.c_str());
 
-	if (this->is_digit(_index))
+	if (_index == "")
+		std::cout << "empty entry" << std::endl;
+	else if (this->is_digit(_index))
 		std::cout << "entry must be a valid digit" << std::endl;
 	else if (index > this->count)
 		std::cout << "the requested member does not exist!" << std::endl;

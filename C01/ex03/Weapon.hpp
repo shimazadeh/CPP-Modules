@@ -1,16 +1,21 @@
 #ifndef _WEAPON_H
 # define _WEAPON_H
 
+#include <iostream>
+
 class Weapon{
 
 public:
-	Weapon(const char *name);
+	Weapon(void);
+	Weapon(const std::string name);
 	~Weapon(void);
-	const char	*getType(void);
-	void	setType(const char *new_type);
+
+
+	const std::string	&getType(void);
+	void				setType(const std::string &new_type);
 
 private:
-	const char	*type;
+	const std::string	type;
 };
 
 #endif

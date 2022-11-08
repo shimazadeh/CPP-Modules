@@ -1,9 +1,8 @@
-#inlcude "Zombie.hpp"
+#include "Zombie.hpp"
 
 void	randomChump(std::string name)
 {
-	Zombie	result;
+	Zombie	result(name);
 
-	result->name = name;
 	result.announce();
 }

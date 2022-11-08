@@ -1,10 +1,8 @@
-#inlcude "Zombie.hpp"
+#include "Zombie.hpp"
 
 Zombie*	newZombie(std::string name)
 {
-	Zombie	result;
-
-	result->name = name;
+	Zombie	*result = new Zombie(name);
 
 	return (result);
 }
