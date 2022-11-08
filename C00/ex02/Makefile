@@ -12,7 +12,7 @@
 
 NAME = account
 
-SRCS = Account.cpp Account.hpp tests.cpp
+SRCS = Account.cpp tests.cpp
 
 OBJS = $(SRCS:%.c=%.o)
 
