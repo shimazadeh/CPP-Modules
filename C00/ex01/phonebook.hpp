@@ -18,13 +18,13 @@
 #include <iostream>
 #include <iomanip>
 
-class phonebook {
+class PhoneBook {
 
 public:
-	phonebook(void);
-	~phonebook(void);
+	PhoneBook(void);
+	~PhoneBook(void);
 
-	void		add_contact(contact &new_member);
+	void		add_contact(Contact &new_member);
 	void		display_all(void);
 	void		search_cmd(std::string index);
 	void		display_member(int index);
@@ -33,7 +33,7 @@ public:
 	int			is_digit(std::string src);
 
 private:
-	contact		lists[8];
+	Contact		lists[8];
 	int			pos;
 	int			count;
 };

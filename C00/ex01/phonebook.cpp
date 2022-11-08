@@ -12,18 +12,18 @@
 
 #include "phonebook.hpp"
 
-phonebook:: phonebook(void){
+PhoneBook:: PhoneBook(void){
 
 	this->pos = 0;
 	this->count = -1;
 	return ;
 }
 
-phonebook::~phonebook(void){
+PhoneBook::~PhoneBook(void){
 	return ;
 }
 
-void	phonebook::add_contact(contact	&new_member){
+void	PhoneBook::add_contact(Contact	&new_member){
 
 	if (this->count < 8)
 		this->count++;
@@ -34,7 +34,7 @@ void	phonebook::add_contact(contact	&new_member){
 	return ;
 }
 
-void	phonebook::display_header(void){
+void	PhoneBook::display_header(void){
 
 	std::cout << std::setw(10) << "index" << "|";
 	std::cout << std::setw(10) << "firstname" << "|";
@@ -44,7 +44,7 @@ void	phonebook::display_header(void){
 	std::cout << std::setw(10) << "secret" << "|" << std::endl;
 }
 
-std::string	phonebook::reshape(std::string src){
+std::string	PhoneBook::reshape(std::string src){
 
 	if (src.length() > 10)
 	{
@@ -54,7 +54,7 @@ std::string	phonebook::reshape(std::string src){
 	return (src);
 }
 
-void	phonebook::display_member(int index){
+void	PhoneBook::display_member(int index){
 
 	std::string	to_display;
 
@@ -75,12 +75,12 @@ void	phonebook::display_member(int index){
 
 }
 
-void	phonebook::display_all(void){
+void	PhoneBook::display_all(void){
 
 	int	i = 0;
 
 	this->display_header();
-	while (this->lists[i].get_firstname().length())
+	while (i < 8)
 	{
 		std::cout << std::setw(10) << i << "|";
 		this->display_member(i);
@@ -88,7 +88,7 @@ void	phonebook::display_all(void){
 	}
 }
 
-int	phonebook::is_digit(std::string	src){
+int	PhoneBook::is_digit(std::string	src){
 
 	int	i = 0;
 
@@ -101,7 +101,7 @@ int	phonebook::is_digit(std::string	src){
 	return 0;
 }
 
-void	phonebook::search_cmd(std::string _index){
+void	PhoneBook::search_cmd(std::string _index){
 
 	int	index = atoi(_index.c_str());
 

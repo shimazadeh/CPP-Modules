@@ -16,7 +16,7 @@ SRCS = phonebook.cpp phonebook.hpp contact.hpp contact.cpp main.cpp
 
 OBJS = $(SRCS:%.c=%.o)
 
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 

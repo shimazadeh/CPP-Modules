@@ -12,7 +12,7 @@
 
 #include "contact.hpp"
 
-contact:: contact(void){
+Contact:: Contact(void){
 
 	this->firstname = "";
 	this->nickname = "";
@@ -21,31 +21,31 @@ contact:: contact(void){
 	this->secret = "";
 }
 
-contact:: ~contact(void){
+Contact:: ~Contact(void){
 	return ;
 }
 
-std::string	contact::get_firstname(){
+std::string	Contact::get_firstname(){
 	return (this->firstname);
 }
 
-std::string	contact::get_nickname(){
+std::string	Contact::get_nickname(){
 	return (this->nickname);
 }
 
-std::string	contact::get_lastname(){
+std::string	Contact::get_lastname(){
 	return (this->lastname);
 }
 
-std::string	contact::get_phonenum(){
+std::string	Contact::get_phonenum(){
 	return (this->phone_num);
 }
 
-std::string	contact::get_secret(){
+std::string	Contact::get_secret(){
 	return (this->secret);
 }
 
-void		contact::update(std::string	name, int i){
+void		Contact::update(std::string	name, int i){
 
 	if (i == 0)
 		this->firstname = name;
@@ -59,7 +59,7 @@ void		contact::update(std::string	name, int i){
 		this->secret = name;
 }
 
-contact	&contact::operator=(contact src){
+Contact	&Contact::operator=(Contact src){
 
 	this->firstname = src.get_firstname();
 	this->lastname = src.get_lastname();

@@ -16,13 +16,13 @@
 #include <iostream>
 #include <string>
 
-class contact{
+class Contact{
 
 public:
-	contact(void);
-	~contact(void);
+	Contact(void);
+	~Contact(void);
 
-	contact	&operator=(contact src);
+	Contact	&operator=(Contact src);
 
 	void		update(std::string name, int i);
 	std::string	get_firstname();

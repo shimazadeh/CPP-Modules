@@ -65,7 +65,6 @@ void	Account::displayAccountsInfos(void){
 	std::cout << "withdrawals:" << Account::_totalNbWithdrawals << std::endl;
 }
 
-
 void	Account::makeDeposit(int deposit){
 
 	Account::_displayTimestamp();
