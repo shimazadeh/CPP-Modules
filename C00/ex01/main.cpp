@@ -12,7 +12,7 @@
 
 #include "phonebook.hpp"
 
-void	fill_in(Contact	*new_member)
+int	fill_in(Contact	*new_member)
 {
 	std::string	buffer;
 	int			flag = 0;
@@ -25,22 +25,21 @@ void	fill_in(Contact	*new_member)
 
 	while(i < 5)
 	{
-		flag = 0;
-		while(!flag)
+		std::cout << questions[i] << std::endl;
+		if (std::getline(std::cin, buffer))
 		{
-			std::cout << questions[i] << std::endl;
-			std::getline(std::cin, buffer);
 			if (buffer.length())
 			{
 				new_member->update(buffer, i);
-				flag = 1;
+				i++;
 			}
 			else
 				std::cout << "entry cannot be empty, try again!" << std::endl;
 		}
-		i++;
+		else
+			return -1;
 	}
-	return ;
+	return 0;
 }
 
 int  main(void)
@@ -54,7 +53,8 @@ int  main(void)
 	{
 		if (!buffer.compare("ADD"))
 		{
-			fill_in(&new_member);
+			if (fill_in(&new_member) < 0)
+				return 0;
 			book.add_contact(new_member);
 		}
 		else if (!buffer.compare("SEARCH"))

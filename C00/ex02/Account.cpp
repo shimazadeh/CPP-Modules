@@ -1,7 +1,8 @@
 #include "Account.hpp"
 #include <iostream>
 #include <string>
-#include <ctime>
+//#include <ctime>
+#include <chrono>
 
 int	Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -130,5 +131,12 @@ void	Account::displayStatus(void) const{
 
 void	Account::_displayTimestamp(void){
 
-	std::cout << "[" << std::time(0) << "] ";
+	std::chrono::time_point<std::chrono::system_clock>	now = std::chrono::system_clock::now();
+	std::time_t		_time = std::chrono::system_clock::to_time_t(now);
+
+	tm local_tm = *localtime(&_time);
+
+	std::cout << "[" << local_tm.tm_year + 1900 << local_tm.tm_mon << local_tm.tm_mday;
+	std::cout << "_" << local_tm.tm_hour << local_tm.tm_min << local_tm.tm_min;
+	std::cout << "] ";
 }

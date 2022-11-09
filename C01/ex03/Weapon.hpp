@@ -15,7 +15,7 @@ public:
 	void				setType(const std::string &new_type);
 
 private:
-	const std::string	type;
+	std::string	type;
 };
 
 #endif
