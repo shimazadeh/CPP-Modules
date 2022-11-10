@@ -1,6 +1,8 @@
 #ifndef _FIXED_H
 # define _FIXED_H
+
 #include <iostream>
+#include <cmath>
 
 class	Fixed{
 

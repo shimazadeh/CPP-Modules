@@ -9,10 +9,10 @@ class	Fixed{
 	Fixed(const int a);
 	Fixed(const float a);
 	Fixed(Fixed const &a);
+	~Fixed(void);
 
 	Fixed &	operator=(Fixed const &a);
 
-	~Fixed(void);
 
 	int		getRawBites(void) const;
 	void	setRawBites(int const raw);

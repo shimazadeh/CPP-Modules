@@ -14,8 +14,8 @@ class	Point{
 	float			area(Point const b1, Point const c1)const;
 
 	private:
-	Fixed	x;
-	Fixed	y;
+		Fixed	x;
+		Fixed	y;
 };
 
 bool bsp( Point const a, Point const b, Point const c, Point const point);

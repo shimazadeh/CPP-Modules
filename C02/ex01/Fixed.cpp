@@ -23,13 +23,13 @@ Fixed::Fixed(Fixed const &a)
 
 Fixed::Fixed(const int a)
 {
+	std::cout << "calling int constructor" << std::endl;
 	this->number = (a << Fixed::frac_bites);
 }
 
 Fixed::Fixed(const float a)
 {
-	std::cout << "calling float constructor" << (1 << Fixed::frac_bites) << std::endl;
-	// this->number = a;
+	std::cout << "calling float constructor " << (1 << Fixed::frac_bites) << std::endl;
 	this->number = roundf(a * (1 << Fixed::frac_bites));
 }
 

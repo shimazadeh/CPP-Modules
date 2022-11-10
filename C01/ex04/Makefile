@@ -12,7 +12,7 @@
 
 NAME = filestream
 
-SRCS = main.cpp
+SRCS = main.cpp Sed.cpp Sed.hpp
 
 OBJS = $(SRCS:%.c=%.o)
 

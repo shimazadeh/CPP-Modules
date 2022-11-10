@@ -1,7 +1,6 @@
 #include "Account.hpp"
 #include <iostream>
 #include <string>
-//#include <ctime>
 #include <chrono>
 
 int	Account::_nbAccounts = 0;

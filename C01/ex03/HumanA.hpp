@@ -1,5 +1,5 @@
-#ifndef _HUMANA_H
-# define _HUMANA_H
+#ifndef _HUMANA_HPP
+# define _HUMANA_HPP
 #include "Weapon.hpp"
 
 class HumanA {
