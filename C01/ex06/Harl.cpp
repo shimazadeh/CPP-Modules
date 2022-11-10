@@ -38,12 +38,6 @@ void	Harl::error(void)
 void	Harl::complain(std::string level)
 {
 	int pos = -1;
-	void	(Harl::*execute[])(void) = {
-		&Harl::debug,
-		&Harl::info,
-		&Harl::warning,
-		&Harl::error,
-	};
 
 	std::string	complain_levels[4] = {
 		"DEBUG",
@@ -64,31 +58,15 @@ void	Harl::complain(std::string level)
 	switch(pos)
 	{
 		case 0:
-		{
-			for (int j = 0; j < 4; j++)
-				(this->*execute[j])();
-			break ;
-		}
+			Harl::debug();
 		case 1:
-		{
-			for (int j = 1; j < 4; j++)
-				(this->*execute[j])();
-			break ;
-		}
+			Harl::info();
 		case 2:
-		{
-			for (int j = 2; j < 4; j++)
-				(this->*execute[j])();
-			break ;
-		}
+			Harl::warning();
 		case 3:
-		{
-			for (int j = 3; j < 4; j++)
-				(this->*execute[j])();
-			break ;
-		}
-		default:
-			std::cout << "[ Probably complaining about insignificant problems ]"<< std::endl;
+			Harl::error();
+		return ;
 	}
+	std::cout << "[ Probably complaining about insignificant problems ]"<< std::endl;
 	return ;
 }
