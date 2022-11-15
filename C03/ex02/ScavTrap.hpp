@@ -1,14 +1,20 @@
 #ifndef _SCAVTRAP_H
 # define _SCAVTRAP_H
+
 # include "ClapTrap.hpp"
 
 class ScavTrap: public ClapTrap
 {
 	public:
-	ScavTrap(std::string str);
-	~ScavTrap(void);
+		ScavTrap(void);
+		ScavTrap(std::string str);
+		ScavTrap(ScavTrap &other);
+		~ScavTrap(void);
 
-	void	guardGate();
+		ScavTrap &	operator=(ScavTrap &a);
+
+		void	attack(const std::string &target);
+		void	guardGate(void);
 
 };
 #endif

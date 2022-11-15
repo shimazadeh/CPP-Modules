@@ -1,19 +1,5 @@
 #include "Animal.hpp"
 
-// Animal::Animal(void)
-// {
-// 	this->type = "Animal";
-// 	std::cout << "Animal default constructor is called" << std::endl;
-// 	return ;
-// }
-
-// Animal::Animal(const Animal &other)
-// {
-// 	*this = other;
-// 	std::cout << "Animal copy constructor is called" << std::endl;
-// 	return ;
-// }
-
 Animal::~Animal(void)
 {
 	std::cout << "Animal destructor is called" << std::endl;
@@ -22,9 +8,12 @@ Animal::~Animal(void)
 
 Animal	&Animal::operator=(const Animal &src)
 {
-	std::cout << "Animal assignment operator is called" << std::endl;
-	this->type = src.getType();
-	*(this->animal_brain) = *(src.getBrain());
+	if (this != &src)
+	{
+		std::cout << "Animal assignment operator is called" << std::endl;
+		this->type = src.getType();
+		this->animal_brain = src.getBrain();
+	}
 	return (*this);
 }
 

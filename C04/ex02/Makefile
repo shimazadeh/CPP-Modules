@@ -16,15 +16,15 @@ SRCS = main.cpp Animal.cpp Animal.hpp Cat.cpp Cat.hpp Dog.cpp Dog.hpp Brain.cpp 
 
 OBJS = $(SRCS:%.c=%.o)
 
-FLAGS = -Wall -Wextra -Werror -Wnoshadow -g3 -std=c++20
+FLAGS = -Wall -Wextra -Werror -Wnoshadow -std=c++98
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	g++ $(OBJS) -o $(NAME)
+	c++ $(OBJS) -o $(NAME)
 
 %.o: %.c
-	g++ $(FLAGS) -c $< -o $@
+	c++ $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f *.o

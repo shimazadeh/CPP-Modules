@@ -22,9 +22,12 @@ Animal::~Animal(void)
 
 Animal	&Animal::operator=(const Animal &src)
 {
-	std::cout << "Animal assignment operator is called" << std::endl;
-	this->type = src.getType();
-	*(this->animal_brain) = *(src.getBrain());
+	if (this != &src)
+	{
+		std::cout << "Animal assignment operator is called" << std::endl;
+		this->type = src.getType();
+		this->animal_brain = src.getBrain();
+	}
 	return (*this);
 }
 

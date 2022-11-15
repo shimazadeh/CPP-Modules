@@ -31,16 +31,16 @@ class Bureaucrat
 				}
 		};
 
-		std::string	getName();
-		int		getGrade();
+		std::string	getName()const;
+		int		getGrade()const;
 		void	increment(int amount);
 		void	decrement(int amount);
 		void	checkGradeHigh();
 		void	checkGradeLow();
 
 	private:
-		std::string		 	name;
-		int					grade;
+		const std::string		 	name;
+		int							grade;
 };
 
 #endif

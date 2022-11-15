@@ -7,10 +7,31 @@ Animal::Animal(void)
 	return ;
 }
 
+Animal::Animal(std::string name)
+{
+	this->type = name;
+	std::cout << "Animal name constructor is called" << std::endl;
+	return ;
+}
+
+Animal::Animal(const Animal &other)
+{
+	*this = other;
+	std::cout << "Animal copy constructor is called" << std::endl;
+	return ;
+}
+
 Animal::~Animal(void)
 {
 	std::cout << "Animal destructor is called" << std::endl;
 	return ;
+}
+
+Animal	&Animal::operator=(const Animal &src)
+{
+	if (this != &src)
+		this->type = src.getType();
+	return (*this);
 }
 
 std::string	Animal::getType(void)const

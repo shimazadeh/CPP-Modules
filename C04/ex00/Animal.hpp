@@ -7,16 +7,17 @@ class Animal
 {
 	public:
 	Animal(void);
-	// Animal(const Animal &src);
-	~Animal(void);
+	Animal(std::string name);
+	Animal(const Animal &src);
+	virtual ~Animal(void);
 
-	// Animal	&operator=(const Animal &src);
+	Animal	&operator=(const Animal &src);
 
 	virtual void	makeSound()const;
 	std::string		getType()const;
 
 	protected:
-	std::string type;
+		std::string type;
 };
 
 #endif

@@ -3,11 +3,11 @@
 DiamondTrap::DiamondTrap(std::string str)
 {
 	std::cout << "DiamondTrap constructor is called" << std::endl;
-	this->name = str;
-	this->ClapTrap::Name = str + "_clap_name";
-	// this->Hit = FragTrap::Hit;
-	// this->Energy = ScavTrap::Energy;
-	// this->damage = FragTrap::damage;
+	this->_name = str;
+	ClapTrap::Name = str + "_clap_name";
+	this->Hit = FragTrap::default_hit;
+	this->Energy = ScavTrap::default_energy;
+	this->damage = FragTrap::default_damage;
 }
 
 DiamondTrap::DiamondTrap(void)
@@ -15,17 +15,23 @@ DiamondTrap::DiamondTrap(void)
 	std::cout << "DiamondTrap default constructor is called" << std::endl;
 }
 
+DiamondTrap::DiamondTrap(DiamondTrap &src)
+{
+	std::cout << "DiamondTrap copy constructor is called" << std::endl;
+	*this = src;
+}
+
 DiamondTrap::~DiamondTrap(void)
 {
 	std::cout << "DiamondTrap destructor is calledd" << std::endl;
 }
 
-void	DiamondTrap::whoAmI(void)
+void	DiamondTrap::whoAmI(void)const
 {
-	std::cout << "the name is " << this->name << " with ClapTrap name of " << this->ScavTrap::Name <<std::endl;
-	std::cout << "hit point: " << this->FragTrap::Hit <<std::endl;
-	std::cout << "energy point: " << this->ScavTrap::Energy << std::endl;
-	std::cout << "damage point: " << this->FragTrap::damage << std::endl;
+	std::cout << "the name is " << this->_name << " with ClapTrap name of " << ClapTrap::Name <<std::endl;
+	std::cout << "hit point: " << this->Hit <<std::endl;
+	std::cout << "energy point: " << this->Energy << std::endl;
+	std::cout << "damage point: " << this->damage << std::endl;
 	return ;
 }
 

@@ -1,15 +1,13 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(void)
+Bureaucrat::Bureaucrat(void): name("")
 {
-	this->name = "";
 	this->grade = 2;
 	std::cout << "default constructor is called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string str)
+Bureaucrat::Bureaucrat(std::string str): name (str)
 {
-	this->name = str;
 	this->grade = 2;
 	std::cout << "Name constructor is called" << std::endl;
 }
@@ -28,18 +26,17 @@ Bureaucrat::~Bureaucrat(void)
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &src)
 {
 	std::cout << "Bureaucrat assignment operator is called" << std::endl;
-	this->getName = src.getName;
-	this->grade = src.getGrade;
+	this->grade = src.getGrade();
 	return (*this);
 }
 
-std::string	Bureaucrat::getName()
+std::string	Bureaucrat::getName()const
 {
 	std::cout << "getName is called" << std::endl;
 	return (this->name);
 }
 
-int	Bureaucrat::getGrade()
+int	Bureaucrat::getGrade()const
 {
 	std::cout << "getGrade is called" << std::endl;
 	return(this->grade);

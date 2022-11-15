@@ -6,10 +6,15 @@ Dog::Dog(void)
 	std::cout << "Dog default constructor is called" << std::endl;
 }
 
+Dog::Dog(const Dog &other)
+{
+	*this = other;
+	std::cout << "Dog copy constructor is called" << std::endl;
+}
+
 Dog::~Dog(void)
 {
 	std::cout << "Dog destructor is called" << std::endl;
-	return ;
 }
 
 void	Dog::makeSound(void)const

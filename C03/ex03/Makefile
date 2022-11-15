@@ -16,15 +16,15 @@ SRCS = main.cpp ClapTrap.cpp ClapTrap.hpp ScavTrap.hpp ScavTrap.cpp FragTrap.cpp
 
 OBJS = $(SRCS:%.c=%.o)
 
-FLAGS = -Wall -Wextra -Werror -Wnoshadow -g3
+FLAGS = -Wno-shadow -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	g++ $(OBJS) -o $(NAME)
+	c++ $(OBJS) -o $(NAME)
 
 %.o: %.c
-	g++ $(FLAGS) -c $< -o $@
+	c++ $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f *.o

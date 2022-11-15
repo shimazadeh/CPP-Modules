@@ -2,15 +2,15 @@
 #define _DOG_HPP
 
 #include "Animal.hpp"
-#include <iostream>
 
 class Dog : public Animal
 {
 	public:
-	Dog(void);
-	~Dog(void);
+		Dog(void);
+		Dog(const Dog &other);
+		virtual ~Dog(void);
 
-	virtual void	makeSound(void)const;
+		virtual void	makeSound(void)const;
 };
 
 #endif

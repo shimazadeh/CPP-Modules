@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap(std::string str)
 {
-	std::cout << "ClapTrap constructor is called" << std::endl;
+	std::cout << "ClapTrap Name constructor is called" << std::endl;
 	this->Name = str;
 	this->Hit = 10;
 	this->Energy = 10;
@@ -12,12 +12,18 @@ ClapTrap::ClapTrap(std::string str)
 
 ClapTrap::ClapTrap(void)
 {
-	std::cout << "default ClapTrap constructor is called" << std::endl;
+	std::cout << "ClapTrap default constructor is called" << std::endl;
 	this->Name = "";
 	this->Hit = 10;
 	this->Energy = 10;
 	this->damage = 0;
 	return ;
+}
+
+ClapTrap::ClapTrap(ClapTrap &src)
+{
+	std::cout << "ClapTrap copy constructor is called" << std::endl;
+	*this = src;
 }
 
 ClapTrap::~ClapTrap(void)
@@ -26,9 +32,39 @@ ClapTrap::~ClapTrap(void)
 	return ;
 }
 
+std::string		ClapTrap::getName(void)const
+{
+	return (this->Name);
+}
+
+int				ClapTrap::getHit(void)const
+{
+	return (this->Hit);
+}
+
+int		ClapTrap::getDamage(void)const
+{
+	return (this->damage);
+}
+
+int		ClapTrap::getEnergy(void)const
+{
+	return (this->Energy);
+}
+
+ClapTrap &	ClapTrap::operator=(ClapTrap &a)
+{
+	std::cout << "ClapTrap assignment operator is called" << std::endl;
+	this->Name = a.getName();
+	this->Hit = a.getHit();
+	this->Energy = a.getEnergy();
+	this->damage = a.getDamage();
+	return (*this);
+}
+
 void	ClapTrap::attack(const std::string &target)
 {
-	if (this->Energy && this->Hit)
+	if (this->Energy > 0 && this->Hit > 0)
 	{
 		std::cout << "ClapTrap " << this->Name << " attacks " << target <<
 		" causing " << this->damage << " points of damage " << std::endl;
@@ -36,7 +72,7 @@ void	ClapTrap::attack(const std::string &target)
 	}
 	else
 	{
-		std::cout << "ClapTrap cannot do anything with energy point of"
+		std::cout << "ClapTrap: " << this->Name <<  " cannot do anything with energy point of "
 		<< this->Energy << " and hit points of: " << this->damage << std::endl;
 	}
 	return ;
@@ -55,7 +91,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->Energy && this->Hit)
+	if (this->Energy > 0 && this->Hit > 0)
 	{
 		this->Hit = this->Hit + amount;
 		this->Energy--;
@@ -64,8 +100,14 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 	else
 	{
-		std::cout << "ClapTrap cannot repair with energy points of: " << this->Energy
+		std::cout << "ClapTrap: " << this->Name << " cannot repair with energy points of " << this->Energy
 		<< " and hit point of " << this->Hit << std::endl;
 	}
 	return ;
+}
+
+std::ostream	&operator<<(std::ostream &ostream, ClapTrap const &src)
+{
+	ostream << "ClapTrap: " << src.getName();
+	return (ostream);
 }

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Fixed
+NAME = BSP
 
 SRCS = main.cpp Fixed.cpp Fixed.hpp Point.cpp Point.hpp
 
@@ -21,10 +21,10 @@ FLAGS = -Wall -Wextra -Werror -g3
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	g++ $(OBJS) -o $(NAME)
+	c++ $(OBJS) -o $(NAME)
 
 %.o: %.c
-	g++ $(FLAGS) -c $< -o $@
+	c++ $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f *.o

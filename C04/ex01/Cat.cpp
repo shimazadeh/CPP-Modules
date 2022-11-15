@@ -24,17 +24,12 @@ Cat::~Cat(void)
 
 Cat	&Cat::operator=(const Cat &src)
 {
-	std::cout << "Cat assignment operator is called" << std::endl;
-	this->type = src.getType();
-	*(this->CatBrain) = *(src.getBrain());
-	return (*this);
-}
-
-Animal	&Cat::operator=(const Animal &src)
-{
-	std::cout << "Animal assignment operator is called" << std::endl;
-	this->type = src.getType();
-	*(this->CatBrain) = *(src.getBrain());
+	if (this != &src)
+	{
+		std::cout << "Cat assignment operator is called" << std::endl;
+		this->type = src.getType();
+		this->CatBrain = src.getBrain();
+	}
 	return (*this);
 }
 

@@ -9,7 +9,7 @@ WrongAnimal::WrongAnimal(void)
 
 WrongAnimal::~WrongAnimal(void)
 {
-	std::cout << "Animal destructor is called" << std::endl;
+	std::cout << "WrongAnimal destructor is called" << std::endl;
 	return ;
 }
 
