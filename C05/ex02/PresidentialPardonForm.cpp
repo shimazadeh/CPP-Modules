@@ -2,23 +2,20 @@
 
 PresidentialPardonForm::PresidentialPardonForm(void) : Form("PresidentialPardonForm", 25, 5), target("")
 {
-	// std::cout << "default constructor is called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &_target) : Form("PresidentialPardonForm", 25, 5), target(_target)
 {
-	// std::cout << "Name constructor is called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &other)
 {
-	// std::cout << "Copy constructor is called" << std::endl;
 	*this = other;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm(void)
 {
-	std::cout << "destructor is called" << std::endl;
+	std::cout << "PresidentialPardonForm destructor is called" << std::endl;
 }
 
 PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm &src)

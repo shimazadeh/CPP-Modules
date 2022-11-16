@@ -17,12 +17,13 @@ class Form
 
 		Form	&operator=(const Form &src);
 
-		bool					beSigned(const Bureaucrat &other);
-		bool					ifSigned()const;
 		const std::string 		&getName()const;
 		int						getSignGrade()const;
 		int						getExecuteGrade()const;
-		void					checkGrade()const;
+		bool					ifSigned()const;
+		void					checkGrade(int grade)const;
+
+		bool					beSigned(const Bureaucrat &other);
 
 		class GradeTooHighException : public std::exception
 		{

@@ -2,23 +2,20 @@
 
 RobotomyRequestForm::RobotomyRequestForm(void) : Form("PresidentialPardonForm", 72, 45), target("")
 {
-	// std::cout << "default constructor is called" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &_target) : Form("PresidentialPardonForm", 72, 45), target(_target)
 {
-	// std::cout << "Name constructor is called" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &other)
 {
-	// std::cout << "Copy constructor is called" << std::endl;
 	*this = other;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(void)
 {
-	std::cout << "destructor is called" << std::endl;
+	std::cout << "RobotomyRequestForm destructor is called" << std::endl;
 }
 
 RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &src)

@@ -7,20 +7,64 @@
 
 int	main()
 {
-	intern	somerandomintern;
-	Form*	form;
-	Bureaucrat	boss("boss", 0);
+	{
+		intern		somerandomintern;
+		Form		*form1;
+		Form		*form2;
+		Form		*form3;
+		Bureaucrat	boss("boss", 1);
 
-	form = somerandomintern.makeForm("Shrubbery Form", "hello");
-	try
-	{
-		form->getName();
-		// form->beSigned(boss);// when its not signed the error msg is wrong
-		form->execute(boss);
+
+		form1 = NULL;
+		form2 = NULL;
+		form3 = NULL;
+
+		try
+		{
+			form1 = somerandomintern.makeForm("Shrubbery Form", "form1");
+			form2 = somerandomintern.makeForm("Presidential Form", "form2");
+			form3 = somerandomintern.makeForm("RobotomyRequest Form", "form3");
+
+			std::cout << *form1 << std::endl;
+			std::cout << *form2 << std::endl;
+			std::cout << *form3 << std::endl;
+
+			form1->beSigned(boss);
+			form1->execute(boss);
+			form2->beSigned(boss);
+			form2->execute(boss);
+			form3->beSigned(boss);
+			form3->execute(boss);
+		}
+		catch(std::exception &e)
+		{
+			std::cout << e.what() <<std::endl;
+		}
+		delete form1;
+		delete form2;
+		delete form3;
 	}
-	catch(std::exception &e)
+
 	{
-		std::cout << e.what() <<std::endl;
+		std::cout << "----------------------" << std::endl;
+		intern		somerandomintern;
+		Form		*form4;
+		Bureaucrat	boss("boss", 1);
+
+		form4 = NULL;
+		try
+		{
+			form4 = somerandomintern.makeForm("Form", "form4");
+			std::cout << *form4 << std::endl;
+			form4->beSigned(boss);
+			form4->execute(boss);
+		}
+		catch(std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		delete form4;
+
 	}
 	return (0);
 }

@@ -3,18 +3,23 @@
 Bureaucrat::Bureaucrat(void): name("")
 {
 	this->grade = 2;
-	std::cout << "default constructor is called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string str): name (str)
+Bureaucrat::Bureaucrat(std::string str, int _grade): name(str)
 {
-	this->grade = 2;
-	std::cout << "Name constructor is called" << std::endl;
+	try
+	{
+		checkGrade(_grade);
+		this->grade = _grade;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other)
 {
-	std::cout << "Copy constructor is called" << std::endl;
 	*this = other;
 }
 
@@ -25,42 +30,57 @@ Bureaucrat::~Bureaucrat(void)
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &src)
 {
-	std::cout << "Bureaucrat assignment operator is called" << std::endl;
 	this->grade = src.getGrade();
 	return (*this);
 }
 
+std::ostream	&operator<<(std::ostream &o,const Bureaucrat &src)
+{
+	o << src.getName() << " " << src.getGrade();
+	return (o);
+}
+
 std::string	Bureaucrat::getName()const
 {
-	std::cout << "getName is called" << std::endl;
 	return (this->name);
 }
 
 int	Bureaucrat::getGrade()const
 {
-	std::cout << "getGrade is called" << std::endl;
 	return(this->grade);
 }
 
-void	Bureaucrat::checkGradeHigh()
+void	Bureaucrat::checkGrade(int grade)
 {
-	if (this->grade < 0)
+	if (grade < 1)
 		throw (Bureaucrat::GradeTooHighException());
-
-}
-
-void	Bureaucrat::checkGradeLow()
-{
-	if (this->grade > 150)
+	if (grade > 150)
 		throw (Bureaucrat::GradeTooLowException());
+	return ;
 }
 
-void	Bureaucrat::increment(int amount)
+void	Bureaucrat::increment()
 {
-	this->grade = this->grade - amount;
+	try
+	{
+		checkGrade(this->grade - 1);
+		this->grade--;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }
 
-void	Bureaucrat::decrement(int amount)
+void	Bureaucrat::decrement()
 {
-	this->grade = this->grade + amount;
+	try
+	{
+		checkGrade(this->grade + 1);
+		this->grade++;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

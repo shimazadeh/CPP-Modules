@@ -2,32 +2,40 @@
 
 int	main()
 {
-	Bureaucrat	test("test1");
+	std::cout << "=============================================" << std::endl;
+	{
+		Bureaucrat	test();
 
-	try
-	{
-		test.increment(3);
-		test.checkGradeLow();
-		std::cout << test.getGrade() << " " << std::endl;
-		test.checkGradeHigh();
-		std::cout << test.getGrade() << " " << std::endl;
-	}
-	catch(std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+		try
+		{
+			test.increment();
+			std::cout << test << std::endl;
+			test.decrement();
+			std::cout << test << std::endl;
+			test.increment();
+			std::cout << test << std::endl;
+			test.increment();
+			std::cout << test << std::endl;
+			test.increment();
+		}
+		catch(std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 
-	try
-	{
-		test.decrement(153);
-		test.checkGradeHigh();
-		std::cout << test.getGrade() << " " << std::endl;
-		test.checkGradeLow();
-		std::cout << test.getGrade() << " " << std::endl;
+		try
+		{
+		}
+		catch(std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 	}
-	catch(std::exception &e)
+	std::cout << "=============================================" << std::endl;
+
 	{
-		std::cout << e.what() << std::endl;
+		Bureaucrat	test1("test2", -1);
+		Bureaucrat	test2("test3", 151);
 	}
 
 	return (0);

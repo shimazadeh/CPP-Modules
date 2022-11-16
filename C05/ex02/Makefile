@@ -16,7 +16,7 @@ SRCS = main.cpp Bureaucrat.cpp Bureaucrat.hpp Form.hpp Form.cpp ShrubberyCreatio
 
 OBJS = $(SRCS:%.c=%.o)
 
-FLAGS = -Wall -Wextra -Werror -Wnoshadow -g3 -std=c++98
+FLAGS = -Wall -Wextra -Werror -Wnoshadow -std=c++98
 
 all: $(NAME)
 

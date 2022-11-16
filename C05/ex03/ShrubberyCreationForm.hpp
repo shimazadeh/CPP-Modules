@@ -11,16 +11,15 @@ class Bureaucrat;
 class ShrubberyCreationForm : public Form
 {
 	public:
-	ShrubberyCreationForm(void);
-	ShrubberyCreationForm(const std::string &target);
-	ShrubberyCreationForm(ShrubberyCreationForm &other);
-	~ShrubberyCreationForm(void);
+		ShrubberyCreationForm(void);
+		ShrubberyCreationForm(const std::string &target);
+		ShrubberyCreationForm(ShrubberyCreationForm &other);
+		~ShrubberyCreationForm(void);
 
-	ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &src);
+		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &src);
 
-	bool				execute(Bureaucrat const &executor)const override;
-	const std::string	getTarget();
-
+		bool				execute(Bureaucrat const &executor)const override;
+		const std::string	getTarget();
 
 	private:
 		const std::string	target;

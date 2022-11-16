@@ -2,28 +2,33 @@
 
 Form::Form(void): name(""), sign(0), gradeToSign(150), gradeToExecute(150)
 {
-	// std::cout << "default constructor is called" << std::endl;
 }
 
-Form::Form(const std::string &str, int _gradeToSign, int _gradeToExecute): name(str), sign(0), gradeToSign(_gradeToSign), gradeToExecute(_gradeToExecute)
+Form::Form(const std::string &str, int _gradeToSign, int _gradeToExecute): name(str), sign(0), gradeToExecute(_gradeToExecute), gradeToSign(_gradeToSign)
 {
-	// std::cout << "name constructor is called" << std::endl;
+	try
+	{
+		checkGrade(_gradeToSign);
+		checkGrade(_gradeToExecute);
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }
 
 Form::Form(const Form &other): name(other.getName()), sign(other.ifSigned()), gradeToSign(other.getSignGrade()), gradeToExecute(other.getExecuteGrade())
 {
 	*this = other;
-	// std::cout << "copy constructor is called" << std::endl;
 }
 
 Form::~Form(void)
 {
-	// std::cout << "destructor is called" << std::endl;
+	std::cout << "destructor is called" << std::endl;
 }
 
 Form	&Form::operator=(const Form &src)
 {
-	// std::cout << "Form assignment operator is called" << std::endl;
 	this->sign = src.ifSigned();
 	return (*this);
 }
@@ -48,11 +53,11 @@ int	Form::getExecuteGrade()const
 	return (this->gradeToExecute);
 }
 
-void	Form::checkGrade()const
+void	Form::checkGrade(int grade)const
 {
-	if (this->gradeToSign < 1 || this->gradeToExecute < 1)
+	if (grade < 1)
 		throw Form::GradeTooHighException();
-	else if (this->gradeToSign > 150 || this->gradeToExecute > 150)
+	else if (grade > 150)
 		throw Form::GradeTooLowException();
 }
 

@@ -12,19 +12,21 @@ class Form;
 class intern
 {
 	public:
-	intern(void);
-	intern(const intern &src);
-	~intern(void);
+		intern(void);
+		intern(const intern &src);
+		~intern(void);
 
-	intern	&operator=(const intern &other);
-	Form	*makeForm(const std::string form_name, const std::string form_target);
+		intern	&operator=(const intern &other);
+		Form	*makeForm(const std::string form_name, const std::string form_target);
 
-	private:
+		class FormError : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Invalid form name for intern to create");
+				}
+		};
 
-	typedef struct s_all_forms
-	{
-		std::string		name;
-		Form			*formtype;
-	}				t_all_forms;
 };
 #endif

@@ -2,23 +2,20 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm(void) : Form("ShrubberyCreationForm", 145, 137), target("")
 {
-	std::cout << "default constructor is called" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &_target) : Form("ShrubberyCreationForm", 145, 137), target(_target)
 {
-	std::cout << "Name constructor is called" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &other)
 {
-	std::cout << "Copy constructor is called" << std::endl;
 	*this = other;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
-	std::cout << "destructor is called" << std::endl;
+	std::cout << "ShrubberyCreationForm destructor is called" << std::endl;
 }
 
 ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &src)

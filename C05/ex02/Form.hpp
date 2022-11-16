@@ -13,7 +13,7 @@ class Form
 		Form(void);
 		Form(const Form &other);
 		Form(const std::string &str, int gradetosign, int gradetoexecute);
-		~Form(void);
+		virtual ~Form(void);
 
 		Form	&operator=(const Form &src);
 
@@ -22,7 +22,7 @@ class Form
 		const std::string 		&getName()const;
 		int						getSignGrade()const;
 		int						getExecuteGrade()const;
-		void					checkGrade()const;
+		void					checkGrade(int grade)const;
 
 		virtual bool	execute(Bureaucrat const &executor) const= 0;
 		bool			ifexecutable(Bureaucrat const &executor) const;
@@ -53,7 +53,7 @@ class Form
 				}
 		};
 
-	private:
+	protected:
 		const std::string	name;
 		bool				sign;
 		const int			gradeToSign;

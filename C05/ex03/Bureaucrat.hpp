@@ -36,19 +36,15 @@ class Bureaucrat
 
 		const std::string	&getName()const;
 		int					getGrade()const;
-		void				increment(int amount);
-		void				decrement(int amount);
-		void				checkGradeHigh();
-		void				checkGradeLow();
+		void				increment();
+		void				decrement();
+		void				checkGrade(int grade);
 		void				signForm(Form &other)const;
 		void				executeForm(const Form &form)const;
 
 	private:
 		const std::string	name;
 		int					grade;
-		// Bureaucrat(void);
-		// void				checkGradeHigh();
-		// void				checkGradeLow();
 };
 
 std::ostream	&operator<<(std::ostream &o,const Bureaucrat &src);
