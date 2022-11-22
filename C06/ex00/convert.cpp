@@ -2,27 +2,27 @@
 
 type::type(void)
 {
-    // std::cout << "default constructor is called" << std::endl;
     this->str = "";
     this->num_i = -1;
     this->num_d = -1;
     this->num_f = -1;
     this->c = -1;
+    this->flag = 0;
 }
 
 type::type(std::string src)
 {
-    // std::cout << "name constructor is called" << std::endl;
     this->str = src;
     this->num_i = -1;
     this->num_d = -1;
     this->num_f = -1;
     this->c = -1;
+    this->flag = 0;
 }
 
 type::~type(void)
 {
-    // std::cout << "destructor is called" << std::endl;
+    std::cout << "destructor is called" << std::endl;
 }
 
 void    type::print_type(void)
@@ -38,13 +38,16 @@ void    type::print_type(void)
         std::cout << this->c << std::endl;
 
     std::cout << "int: ";
-    if (this->num_i == std::numeric_limits<int>::quiet_NaN())
+    if (flag == 1 || ((this->str).length() >= 10 && (this->str).compare("2147483647") > 0))
         std::cout << "impossible" << std::endl;
-    else
+    else if ((this->str).length() >= 11 && (this->str).compare("-2147483648") > 0)
+        std::cout << "impossible" << std::endl;
+    else if (this->num_i >= std::numeric_limits<int>::min() && this->num_i <= std::numeric_limits<int>::max())
         std::cout << this->num_i << std::endl;
 
-    std::cout << "float: " << this->num_f << 'f'<< std::endl;
+    std::cout << "float: " << this->num_f << 'f' << std::endl;
     std::cout << "double: " << this->num_d << std::endl;
+
     return;
 }
 
@@ -66,7 +69,6 @@ bool    type::if_digit(void)
         else
             return false;
     }
-
     return true;
 }
 
@@ -74,8 +76,7 @@ bool    type::checklimit(void)
 {
     if (!(this->str).compare("-inff") || !(this->str).compare("-inf"))
     {
-        this->num_i = std::numeric_limits<int>::infinity();
-        this->num_i = -1 * (this->num_i);
+        flag = 1;
         this->num_d = std::numeric_limits<double>::infinity();
         this->num_d = -1 * (this->num_d);
         this->num_f = std::numeric_limits<float>::infinity();
@@ -84,13 +85,14 @@ bool    type::checklimit(void)
     }
     else if (!(this->str).compare("+inff") || !(this->str).compare("+inf"))
     {
-        this->num_i = std::numeric_limits<int>::infinity();
+        flag = 1;
         this->num_d = std::numeric_limits<double>::infinity();
         this->num_f = std::numeric_limits<float>::infinity();
         return true;
     }
     if (!(this->str).compare("nanf") || !(this->str).compare("nan"))
     {
+        flag = 1;
         this->num_i = std::numeric_limits<int>::quiet_NaN();
         this->num_d = std::numeric_limits<double>::quiet_NaN();
         this->num_f = std::numeric_limits<float>::quiet_NaN();
@@ -101,19 +103,16 @@ bool    type::checklimit(void)
 
 void    type::evaluate(void)
 {
-    // if (this->str == "")
-    // {
-    //     // std::cout << "undisplayable" << std::endl;
-    //     this->setundisplayable();
-    // }
+    if (this->str == "")
+    {
+        this->setundisplayable();
+    }
     if (this->checklimit())
     {
-        // std::cout << "setting limits" << std::endl;
         return ;
     }
-    else if (this->if_digit())
+    else if (this->if_digit() || this->flag)
     {
-        // std::cout << "setting as number" << std::endl;
         this->setasnumber();
     }
     else
@@ -131,8 +130,14 @@ void    type::setundisplayable(void)
 
 void    type::setasnumber(void)
 {
-    this->num_i = std::stoi(this->str);
-    this->num_d = std::stod(this->str);
-    this->num_f = std::stof(this->str);
+    this->num_i = atoi(this->str.c_str());
+    this->num_d = atof(this->str.c_str());
+    this->num_f = atof(this->str.c_str());
     this->c = num_i;
+
+
+    // this->num_i = std::stoi(this->str);
+    // this->num_d = std::stod(this->str);
+    // this->num_f = std::stof(this->str);
+    // this->c = num_i;
 }

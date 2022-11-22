@@ -20,6 +20,7 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 
 PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm &src)
 {
+	(void)src;
 	return (*this);
 }
 

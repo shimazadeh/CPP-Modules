@@ -12,24 +12,29 @@
 
 NAME = convert
 
-SRCS = main.cpp convert.cpp convert.hpp
+INCLUDES = convert.hpp
 
-OBJS = $(SRCS:%.c=%.o)
+SRCS = main.cpp convert.cpp
 
-FLAGS = -Wall -Wextra -Werror -Wnoshadow -g3 -std=c++20
+OBJS = $(SRCS:%.cpp=%.o)
+
+FLAGS = -Wall -Wextra -Werror -g3 -std=c++98 $(INCLUDES)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	g++ $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) $(INCLUDES)
+	c++ $(OBJS) -o $(NAME)
 
-%.o: %.c
-	g++ $(FLAGS) -c $< -o $@
+%.o: %.cpp
+	c++ $(FLAGS) -c $<
 
 clean:
 	rm -f *.o
+	rm -f *.gch
 
 fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean

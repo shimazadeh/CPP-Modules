@@ -23,22 +23,29 @@ intern	&intern::operator=(const intern &src)
 
 Form	*intern::makeForm(const std::string form_name, const std::string form_target)
 {
-	std::string	ref = "Shrubbery Form Presidential Form RobotomyRequest Form";
+	std::string	ref[3] = {"Shrubbery Form", "Presidential Form", "RobotomyRequest Form"};
 	int			res;
 
+	res = -1;
+	for (int i = 0;  i < 3 ; i++)
+	{
+		if (ref[i].find(form_name) == 0)
+		{
+			res = i;
+			break;
+		}
+	}
 
-	res = ref.find(form_name);
 	switch(res)
 	{
 		case(0):
-			return (new ShrubberyCreationForm());
-		case(15):
-			return (new PresidentialPardonForm());
-		case(33):
-			return (new RobotomyRequestForm());
-		default:
-			throw intern::FormError();
+			return (new ShrubberyCreationForm(form_target));
+		case(1):
+			return (new PresidentialPardonForm(form_target));
+		case(2):
+			return (new RobotomyRequestForm(form_target));
 	}
+	throw intern::FormError();
 	return (NULL);
 }
 

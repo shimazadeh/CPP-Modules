@@ -6,6 +6,7 @@ Base	*generate(void)
 	int 	num = rand() % 3;
 	Base	*result;
 
+	result = NULL;
 	if (num == 0)
 		result = new A;
 	else if (num == 1)
@@ -44,7 +45,7 @@ void	identify(Base &p)
 	}
 	catch(std::exception &e)
 	{
-		// std::cout << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	try
 	{
@@ -53,7 +54,7 @@ void	identify(Base &p)
 	}
 	catch(std::exception &e)
 	{
-		// std::cout << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	try
 	{
@@ -62,7 +63,7 @@ void	identify(Base &p)
 	}
 	catch(std::exception &e)
 	{
-		// std::cout << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }
 

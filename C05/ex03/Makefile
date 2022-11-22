@@ -12,24 +12,30 @@
 
 NAME = StupidIntern
 
-SRCS = main.cpp Bureaucrat.cpp Bureaucrat.hpp Form.hpp Form.cpp ShrubberyCreationForm.cpp ShrubberyCreationForm.hpp PresidentialPardonForm.cpp PresidentialPardonForm.hpp RobotomyRequestForm.cpp RobotomyRequestForm.hpp Intern.cpp Intern.hpp
+INCLUDES = Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp Intern.hpp
 
-OBJS = $(SRCS:%.c=%.o)
+SRCS = main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp Intern.cpp
 
-FLAGS = -Wall -Wextra -Werror -Wnoshadow -g3 -std=c++98
+OBJS = $(SRCS:%.cpp=%.o)
+
+FLAGS = -Wall -Wextra -Werror -g3 -std=c++98 $(INCLUDES)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INCLUDES)
 	c++ $(OBJS) -o $(NAME)
 
-%.o: %.c
-	c++ $(FLAGS) -c $< -o $@
+%.o: %.cpp
+	c++ $(FLAGS) -c $<
 
 clean:
 	rm -f *.o
+	rm -f *.gch
 
 fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean
+

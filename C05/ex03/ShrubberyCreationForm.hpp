@@ -18,7 +18,7 @@ class ShrubberyCreationForm : public Form
 
 		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &src);
 
-		bool				execute(Bureaucrat const &executor)const override;
+		bool				execute(Bureaucrat const &executor)const;
 		const std::string	getTarget();
 
 	private:

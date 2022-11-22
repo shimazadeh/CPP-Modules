@@ -14,7 +14,6 @@ int	main()
 		Form		*form3;
 		Bureaucrat	boss("boss", 1);
 
-
 		form1 = NULL;
 		form2 = NULL;
 		form3 = NULL;
@@ -31,10 +30,19 @@ int	main()
 
 			form1->beSigned(boss);
 			form1->execute(boss);
+			boss.signForm(*form1);
+
 			form2->beSigned(boss);
 			form2->execute(boss);
+			boss.signForm(*form2);
+
 			form3->beSigned(boss);
 			form3->execute(boss);
+			boss.signForm(*form3);
+
+			std::cout << *form1 << std::endl;
+			std::cout << *form2 << std::endl;
+			std::cout << *form3 << std::endl;
 		}
 		catch(std::exception &e)
 		{
@@ -46,7 +54,7 @@ int	main()
 	}
 
 	{
-		std::cout << "----------------------" << std::endl;
+		std::cout << "=========================================================" << std::endl;
 		intern		somerandomintern;
 		Form		*form4;
 		Bureaucrat	boss("boss", 1);

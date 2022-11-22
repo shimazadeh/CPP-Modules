@@ -59,7 +59,7 @@ void	Bureaucrat::checkGrade(int grade)
 	return ;
 }
 
-void	Bureaucrat::increment()
+void	Bureaucrat::increment(void)
 {
 	try
 	{
@@ -72,7 +72,7 @@ void	Bureaucrat::increment()
 	}
 }
 
-void	Bureaucrat::decrement()
+void	Bureaucrat::decrement(void)
 {
 	try
 	{

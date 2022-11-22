@@ -4,7 +4,7 @@ Form::Form(void): name(""), sign(0), gradeToSign(150), gradeToExecute(150)
 {
 }
 
-Form::Form(const std::string &str, int _gradeToSign, int _gradeToExecute): name(str), sign(0), gradeToExecute(_gradeToExecute), gradeToSign(_gradeToSign)
+Form::Form(const std::string &str, int _gradeToSign, int _gradeToExecute): name(str), sign(0), gradeToSign(_gradeToSign), gradeToExecute(_gradeToExecute)
 {
 	try
 	{
@@ -24,7 +24,7 @@ Form::Form(const Form &other): name(other.getName()), sign(other.ifSigned()), gr
 
 Form::~Form(void)
 {
-	std::cout << "destructor is called" << std::endl;
+	std::cout << "form destructor is called" << std::endl;
 }
 
 Form	&Form::operator=(const Form &src)
@@ -71,6 +71,7 @@ bool	Form::beSigned(const Bureaucrat &other)
 	else
 	{
 		this->sign = 0;
+		throw Form::GradeTooLowException();
 		return false;
 	}
 }

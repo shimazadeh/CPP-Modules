@@ -12,24 +12,29 @@
 
 NAME = Form
 
-SRCS = main.cpp Bureaucrat.cpp Bureaucrat.hpp Form.hpp Form.cpp
+INCLUDES = Bureaucrat.hpp Form.hpp
 
-OBJS = $(SRCS:%.c=%.o)
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
 
-FLAGS = -Wall -Wextra -Werror -g3 -std=c++98
+OBJS = $(SRCS:%.cpp=%.o)
+
+FLAGS = -Wall -Wextra -Werror -g3 -std=c++98 $(INCLUDES)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INCLUDES)
 	c++ $(OBJS) -o $(NAME)
 
-%.o: %.c
-	c++ $(FLAGS) -c $< -o $@
+%.o: %.cpp
+	c++ $(FLAGS) -c $<
 
 clean:
 	rm -f *.o
+	rm -f *.gch
 
 fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean

@@ -18,7 +18,7 @@ class PresidentialPardonForm : public Form
 
 		PresidentialPardonForm	&operator=(const PresidentialPardonForm &src);
 
-		bool				execute(Bureaucrat const &executor)const override;
+		bool				execute(Bureaucrat const &executor)const;
 		const std::string	getTarget();
 
 	private:

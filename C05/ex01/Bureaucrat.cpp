@@ -80,7 +80,7 @@ void	Bureaucrat::decrement()
 
 void	Bureaucrat::signForm(Form &other)const
 {
-	if (other.beSigned(*this))
+	if (other.ifSigned())
 	{
 		std::cout << this->getName() << " signed " << other.getName() << std::endl;
 	}

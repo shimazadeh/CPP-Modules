@@ -14,17 +14,17 @@ NAME = array
 
 SRCS = main.cpp Array.hpp
 
-OBJS = $(SRCS:%.c=%.o)
+OBJS = $(SRCS:%.cpp=%.o)
 
 FLAGS = -Wall -Wextra -Werror -g3 -std=c++20
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	g++ $(OBJS) -o $(NAME)
+	c++ $(OBJS) -o $(NAME)
 
-%.o: %.c
-	g++ $(FLAGS) -c $< -o $@
+%.o: %.cpp
+	c++ $(FLAGS) -c $<
 
 clean:
 	rm -f *.o

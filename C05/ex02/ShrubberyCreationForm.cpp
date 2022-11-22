@@ -20,6 +20,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 
 ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &src)
 {
+	(void)src;
 	return (*this);
 }
 
@@ -35,7 +36,7 @@ bool	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	{
 		std::ofstream	outfile;
 
-		outfile.open(file_name);
+		outfile.open(file_name.c_str());
 		outfile << "          .     .  .      +     .      .          ." << std::endl;
 		outfile << "     .       .      .     #       .           ." << std::endl;
 		outfile << "        .      .         ###            .      .      ." << std::endl;

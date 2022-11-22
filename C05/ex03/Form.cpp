@@ -71,6 +71,7 @@ bool	Form::beSigned(const Bureaucrat &other)
 	else
 	{
 		this->sign = 0;
+		throw Form::GradeTooLowException();
 		return false;
 	}
 }

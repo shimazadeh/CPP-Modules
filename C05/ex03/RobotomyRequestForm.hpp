@@ -19,7 +19,7 @@ class RobotomyRequestForm : public Form
 
 		RobotomyRequestForm	&operator=(const RobotomyRequestForm &src);
 
-		bool				execute(Bureaucrat const &executor)const override;
+		bool				execute(Bureaucrat const &executor)const;
 		const std::string	getTarget();
 
 	private:
