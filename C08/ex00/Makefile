@@ -10,24 +10,27 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = whatever
+NAME = easyfind
 
-SRCS = main.cpp whatever.hpp
+INCLUDES = easyfind.hpp
 
-OBJS = $(SRCS:%.c=%.o)
+SRCS = main.cpp
 
-FLAGS = -Wall -Wextra -Werror -Wnoshadow -g3 -std=c++20
+OBJS = $(SRCS:%.cpp=%.o)
+
+FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INCLUDES)
 	g++ $(OBJS) -o $(NAME)
 
-%.o: %.c
-	g++ $(FLAGS) -c $< -o $@
+%.o: %.cpp
+	g++ $(FLAGS) -c $<
 
 clean:
 	rm -f *.o
+	rm -f *.gch
 
 fclean: clean
 	rm -rf $(NAME)

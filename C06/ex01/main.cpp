@@ -31,4 +31,6 @@ int	main(void)
 
 	std::cout << "the original is: " << ptr << std::endl;
 	std::cout << "the deserialized: " << ptr_new << std::endl;
+
+	delete ptr;
 }

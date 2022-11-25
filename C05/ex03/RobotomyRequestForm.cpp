@@ -1,10 +1,10 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void) : Form("PresidentialPardonForm", 72, 45), target("")
+RobotomyRequestForm::RobotomyRequestForm(void) : Form("RobotomyRequestForm", 72, 45), target("")
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &_target) : Form("PresidentialPardonForm", 72, 45), target(_target)
+RobotomyRequestForm::RobotomyRequestForm(const std::string &_target) : Form("RobotomyRequestForm", 72, 45), target(_target)
 {
 }
 

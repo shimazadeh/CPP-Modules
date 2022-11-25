@@ -12,15 +12,17 @@
 
 NAME = array
 
-SRCS = main.cpp Array.hpp
+INCLUDES = Array.hpp
+
+SRCS = main.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 
-FLAGS = -Wall -Wextra -Werror -g3 -std=c++20
+FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INCLUDES)
 	c++ $(OBJS) -o $(NAME)
 
 %.o: %.cpp
@@ -28,6 +30,7 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f *.o
+	rm -f *.gch
 
 fclean: clean
 	rm -rf $(NAME)

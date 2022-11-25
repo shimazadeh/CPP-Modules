@@ -10,7 +10,7 @@ void	function(T &element)
 }
 
 template<typename T>
-void	iter(T *array, int len, void function(T &element))
+void	iter(T *array, int len, void function(const T &element))
 {
 	for (int i = 0; i < len; i++)
 		function(array[i]);

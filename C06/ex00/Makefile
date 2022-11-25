@@ -18,7 +18,7 @@ SRCS = main.cpp convert.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 
-FLAGS = -Wall -Wextra -Werror -g3 -std=c++98 $(INCLUDES)
+FLAGS = -Wall -Wextra -Werror -std=c++98 $(INCLUDES)
 
 all: $(NAME)
 
