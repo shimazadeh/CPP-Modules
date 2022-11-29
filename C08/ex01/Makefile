@@ -10,11 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = easyfind
+NAME = Span
 
-INCLUDES = easyfind.hpp
+INCLUDES = Span.hpp
 
-SRCS = main.cpp
+SRCS = main.cpp Span.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 

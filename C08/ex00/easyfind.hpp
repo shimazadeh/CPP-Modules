@@ -3,18 +3,28 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using	namespace	std;
 
-template<typename T>
-void	easyfind(T	array, int a)
+class NoMatchFound: public std::exception
 {
-	for (int i = 0; i < ; i++)
-	{
-		if (array[i] == a)
-			return (i);
-	}
-	throw	NoMatchFound();
+	public:
+		virtual const char* what() const throw()
+		{
+			return ("Match not found!");
+		}
+};
+
+template<typename T>
+typename T::iterator	easyfind(T	&array, int a)
+{
+	typename T::iterator	p;
+
+	p = std::find(array.begin(), array.end(), a);
+	if (p == array.end())
+		throw NoMatchFound();
+	return (p);
 }
 
 #endif
