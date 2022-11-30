@@ -10,11 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Span
+NAME = MutantStack
 
-INCLUDES = Span.hpp
+INCLUDES = MutantStack.hpp
 
-SRCS = main.cpp Span.cpp
+SRCS = main.cpp MutantStack.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 
