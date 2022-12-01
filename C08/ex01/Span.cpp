@@ -42,17 +42,6 @@ void	Span::addNumber(unsigned int add)
 		storage.push_back(add);
 }
 
-void	Span::range(int start, int end)
-{
-	std::vector<int>	result(end - start + 1);
-
-	std::iota(result.begin(), result.end(), start);
-	if (storage.size() < size && ((long unsigned int)(end - start + 1) <= size - storage.size()))
-		std::copy(result.begin(), result.end(), std::back_inserter(storage));
-	else
-		std::cout << "There is not enough space to add the range" << std::endl;
-}
-
 void	Span::display(void)const
 {
 	std::cout << "displaying the array: ";

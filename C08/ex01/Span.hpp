@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <numeric>
+#include <iterator>
 
 class Span
 {
@@ -16,7 +16,6 @@ class Span
 
 		Span &operator=(const Span &src);
 
-		void				range(int start, int end);
 		void				addNumber(unsigned int add);
 		int					shortestSpan(void)const;
 		int					longestSpan(void)const;
@@ -33,12 +32,20 @@ class Span
 				}
 		};
 
+		template<class iterator>
+		void	addNumber(iterator start, iterator end)
+		{
+			if ((long unsigned int)(end - start) <= size && (long unsigned int)(end - start) <= size - storage.size())
+				std::copy(start, end, std::back_inserter(storage));
+			else
+				std::cout << "There is not enough space to add the range" << std::endl;
+		}
+
 	private:
 		long unsigned int	size;
 		std::vector<int>	storage;
 };
 
 std::ostream	&operator<<(std::ostream &o, const Span &src);
-// void	display_v(std::vector<int>	g1);
 
 # endif

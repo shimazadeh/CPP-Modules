@@ -5,8 +5,6 @@
 #include <vector>
 #include <algorithm>
 
-using	namespace	std;
-
 class NoMatchFound: public std::exception
 {
 	public:

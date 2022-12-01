@@ -11,15 +11,18 @@ void	display(vector<int>	g1)
 int	main()
 {
 	vector<int>	g1{1, 2, 3, 4, 5};
-	vector<int>::iterator	p;
-
 	try
 	{
-		std::cout << "----before----" << std::endl;
+		std::cout << "----displaying the list----" << std::endl;
 		display(g1);
-		p = easyfind(g1 , 9);
-		std::cout << "----after----" << std::endl;
+		std::cout << "----findings----" << std::endl;
+
+		vector<int>::iterator	p = easyfind(g1 , 5);
 		std::cout << *p << std::endl;
+		vector<int>::iterator	b = easyfind(g1, 1);
+		std::cout << *b << std::endl;
+		vector<int>::iterator	a = easyfind(g1, 9);
+		std::cout << *a << std::endl;
 	}
 	catch(std::exception &e)
 	{
