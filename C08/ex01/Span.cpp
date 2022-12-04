@@ -40,6 +40,8 @@ void	Span::addNumber(unsigned int add)
 		std::cout << "impossible to add more numbers!" << std::endl;
 	else if (size > 0)
 		storage.push_back(add);
+	else if (size <= 0)
+		throw Span::ExceptionError();
 }
 
 void	Span::display(void)const
@@ -52,23 +54,32 @@ void	Span::display(void)const
 	std::cout << std::endl;
 }
 
-int	Span::shortestSpan(void)const
+long int	Span::shortestSpan(void)const
 {
-	int	result = 0;
+	long int	result = 2147483647;
 
 	if (size > 0)
 	{
 		std::vector<int> tmp = storage;
 
 		std::sort(tmp.begin(), tmp.end());
-		result = *(tmp.begin() + 1) - *(tmp.begin());
+		int tmp2;
+		for (auto i = tmp.begin(); i != tmp.end() - 1; i++)
+		{
+			tmp2 = *(i + 1) - *i;
+			if (std::less<int>{}(tmp2, result))
+				result = tmp2;
+		}
+		return (result);
 	}
-	return (result);
+	else if (size <= 0)
+		throw Span::CannotSpan();	
+	return (0);
 }
 
-int	Span::longestSpan(void)const
+long int	Span::longestSpan(void)const
 {
-	int	result = 0;
+	long int	result = 0;
 
 	if (size > 0)
 	{
@@ -77,6 +88,8 @@ int	Span::longestSpan(void)const
 		std::sort(tmp.begin(), tmp.end());
 		result = *(tmp.end() - 1) - *(tmp.begin());
 	}
+	else if (size <= 0)
+		throw Span::CannotSpan();
 	return (result);
 }
 
@@ -85,10 +98,3 @@ std::ostream	&operator<<(std::ostream &o, const Span &src)
 	o << "shortest span of: " << src.shortestSpan() << " and the longest span of: " << src.longestSpan() << " with size of:" << src.getSize();
 	return o;
 }
-
-
-// void	display_v(std::vector<int>	g1)
-// {
-// 	for (auto i = g1.begin(); i != g1.end(); ++i)
-// 		std::cout << *i << std::endl;
-// }
